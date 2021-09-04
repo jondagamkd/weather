@@ -8,49 +8,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body>
+<body class="container">
     <header class="row justify-content-around">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <h1>Weather Dashboard</h1>
         </div>
     </header>
     <section class="row">
-        <div class="col-md-3 border border-primary">
-            <h1>one</h1>
-            <h1>two</h1>
-            <h1>three</h1>
-            <h1>four</h1>
+        <div class="col-md-4 border border-primary">
+            <div class="row border border-danger">
+                <div class="col-md">
+                    <h4>Search for a City:</h4>
+                    <input type="text" class="form-control" id="wSearchInput" placeholder="San Diego" value="" required="">
+                    <button class="btn btn-primary btn-sm btn-block my-2" type="submit" id="wSearchBtn">Search</button>
+                </div>
+            </div>
+            <div class="row border border-primary">
+                <div class="col-md" id="wHistory">
+                    <h1>three</h1>
+                    <h1>four4</h1>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9 border border-primary">
+        <div class="col-md-8 border border-primary">
             <div class="row">
-                <div class="col-md-12 border border-danger">
+                <div class="col-md-12 border border-danger" id="currentSel">
                     <h1>one</h1>
                     <h1>two</h1>
                     <h1>three</h1>
                     <h1>four</h1>
                 </div>
             </div>
-            <h1>Tacos</h1>
-            <div class="row">
+            <h1>5-day Forecast:</h1>
+            <div class="row" id="forecast">
                 <div class="col-md border border-warning">
                     <h1>one</h1>
                 </div>
                 <div class="col-md border border-warning">
                     <h1>two</h1>
-                </div>
-                <div class="col-md border border-warning">
-                    <h1>three</h1>
-                </div>
-                <div class="col-md border border-warning">
-                    <h1>four</h1>
-                </div>
-                <div class="col-md border border-warning">
-                    <h1>five</h1>
                 </div>
             </div>
         </div>
     </section>
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
