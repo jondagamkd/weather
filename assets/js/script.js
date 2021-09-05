@@ -121,11 +121,16 @@ function displayWeather(loc) {
 document.getElementById("wSearchBtn").addEventListener("click", searchBtn);
 function searchBtn() {
   var locInput = document.getElementById("wSearchInput").value;
-  weatherSearch.push(locInput);
-  saveWeather()
-  //console.log(weatherSearch)
-  document.getElementById("wSearchInput").value = "";
-  displayWeather(locInput)
+  if (locInput) {
+    weatherSearch.push(locInput);
+    saveWeather()
+    //console.log(weatherSearch)
+    document.getElementById("wSearchInput").value = "";
+    displayWeather(locInput)
+  }
+  else {
+    alert("Please enter a valid city name.")
+  }
 }
 
 $("#wHistory").on("click", "button", function() {
