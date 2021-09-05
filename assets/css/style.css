@@ -1,0 +1,17 @@
+#forecasts {
+    font-size: 12px;
+    background-color: #2f465b;
+}
+
+#forecasts p, #forecasts img {
+    padding: 0;
+}
+
+#header {
+    background-image: linear-gradient(to right, rgb(0, 60, 255) , rgb(38, 4, 116));
+    color: white;
+}
+
+.hButton {
+    background-color: #b8b8b8;
+}

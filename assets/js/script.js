@@ -8,6 +8,9 @@ var loadWeather = function() {
     if (!weatherSearch) {
       weatherSearch = [];
     }
+    else if (weatherSearch.length > 0) {
+      displayWeather(weatherSearch[weatherSearch.length - 1]) 
+    }
 };
 loadWeather()
 
@@ -23,17 +26,23 @@ function displayWeather(loc) {
 
     // Display Sidebar History at Bottom Left //
     for (let index = 0; index < weatherSearch.length; index++) {
-        var locHtml = "<button class='btn btn-secondary btn-sm btn-block my-2 id='" + weatherSearch[index] + "'>" + weatherSearch[index] + "</button>";
-        console.log(weatherSearch[index]);
+        var locHtml = "<button class='btn btn-secondary btn-sm btn-block my-2 hButton text-dark font-weight-bold'>" + weatherSearch[index] + "</button>";
+        //console.log(weatherSearch[index]);
         document.getElementById("wHistory").innerHTML += locHtml;
-        console.log(locHtml)        
+        //console.log(locHtml)        
     }
     
     // Get long and lat from another API to plug into the onecall API //
     var apiFetch = "https://api.openweathermap.org/data/2.5/weather?q=" + loc + "&appid=5f485932ce6a77c32c506953dba4be71&units=imperial";
+    console.log("loc = " + loc)
     fetch(apiFetch)
     .then(function(response) {
-      return response.json();
+      if (response.ok) {
+        return response.json();
+      }
+      else {
+        alert("City was not found.")
+      }
     })
     .then(function(response) {
          var coordLon = response.coord.lon;
@@ -68,7 +77,7 @@ function displayWeather(loc) {
         y = n.getFullYear();
         m = n.getMonth() + 1;
         d = n.getDate();
-        document.getElementById("currentSel").innerHTML += "<h4>" + weatherSearch[weatherSearch.length - 1] + " (" + m + '/' + d + '/' + y + ") <img src=" + icoUrl + "></h4>";
+        document.getElementById("currentSel").innerHTML += "<h4 class='font-weight-bold'>" + loc + " (" + m + '/' + d + '/' + y + ") <img src=" + icoUrl + "></h4>";
         document.getElementById("currentSel").innerHTML += "<p>Temp: " + temp + "℉</p>";
         document.getElementById("currentSel").innerHTML += "<p>Wind: " + wind + " MPH</p>";
         document.getElementById("currentSel").innerHTML += "<p>Humidity: " + humidity + " %</p>";
@@ -96,7 +105,7 @@ function displayWeather(loc) {
             var humanDate = date.toLocaleDateString("en-US")
 
             document.getElementById("forecast").innerHTML += 
-            "<div class='col-md bg-primary text-light'>" +
+            "<div class='col-md text-light mr-3 mb-3' id='forecasts'>" +
             "<h5>" + humanDate + "</h5>" +
             "<img src=" + icoUrlFor + ">" +
             "<p>Temp: " + tempFor + " ℉</p>" +
@@ -111,13 +120,22 @@ function displayWeather(loc) {
 
 document.getElementById("wSearchBtn").addEventListener("click", searchBtn);
 function searchBtn() {
-    var locInput = document.getElementById("wSearchInput").value;
-    weatherSearch.push(locInput);
-    console.log(weatherSearch)
-    document.getElementById("wSearchInput").value = "";
-    displayWeather(locInput)
+  var locInput = document.getElementById("wSearchInput").value;
+  weatherSearch.push(locInput);
+  saveWeather()
+  //console.log(weatherSearch)
+  document.getElementById("wSearchInput").value = "";
+  displayWeather(locInput)
 }
 
+$("#wHistory").on("click", "button", function() {
+  //$(this).closest(".timeRow").children(".saveBtn").children("span").addClass("oi-lock-unlocked").removeClass("oi-lock-locked")
+  var text = $(this)
+    .text()
+    .trim();
+  console.log("text = " + text);
+  displayWeather(text);
+});
 
 
-saveWeather()
+

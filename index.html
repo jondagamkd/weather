@@ -9,44 +9,32 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body class="container">
-    <header class="row justify-content-around">
-        <div class="col-md-7">
-            <h1>Weather Dashboard</h1>
+    <header class="row" id="header">
+        <div class="col-md d-flex justify-content-center">
+            <h2 class="font-weight-bold">Weather Dashboard</h2>
         </div>
     </header>
     <section class="row">
-        <div class="col-md-4 border border-primary">
-            <div class="row border border-danger">
+        <div class="col-md-4">
+            <div class="row">
                 <div class="col-md">
-                    <h4>Search for a City:</h4>
+                    <h4 class="font-weight-bold">Search for a City:</h4>
                     <input type="text" class="form-control" id="wSearchInput" placeholder="San Diego" value="" required="">
                     <button class="btn btn-primary btn-sm btn-block my-2" type="submit" id="wSearchBtn">Search</button>
                 </div>
             </div>
-            <div class="row border border-primary">
+            <div class="row">
                 <div class="col-md" id="wHistory">
-                    <h1>three</h1>
-                    <h1>four4</h1>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 border border-primary">
+        <div class="col-md-8">
             <div class="row">
-                <div class="col-md-12 border border-danger" id="currentSel">
-                    <h1>one</h1>
-                    <h1>two</h1>
-                    <h1>three</h1>
-                    <h1>four</h1>
+                <div class="col-md-12 border border-dark mt-3" id="currentSel">
                 </div>
             </div>
-            <h1>5-day Forecast:</h1>
+            <h3>5-day Forecast:</h3>
             <div class="row" id="forecast">
-                <div class="col-md border border-warning">
-                    <h1>one</h1>
-                </div>
-                <div class="col-md border border-warning">
-                    <h1>two</h1>
-                </div>
             </div>
         </div>
     </section>
